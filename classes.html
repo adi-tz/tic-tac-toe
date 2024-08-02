@@ -1,0 +1,84 @@
+<html>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+      <div class="mermaid">
+    
+        classDiagram
+          class Agent {
+            board
+            marker
+            get_player_move()*
+          }
+          class AgentFactory {
+            get_agent(i: AgentType, marker, board, scoreboards)
+          }
+          class AgentType {
+            name
+          }
+          class Board {
+            game_board : list
+            get_empty_places()
+            get_str_board()
+            is_full()
+            is_move_valid(move: str)
+            is_tie()
+            is_winner(player)
+            print_board()
+            submit_move(move: str, player: str) bool
+          }
+          class Game {
+            board
+            current_game_boards : list
+            gamma : float
+            last_move : int
+            markers : list
+            player1
+            player2
+            scoreboards : dict
+            winner : NoneType
+            winner_name : str
+            add_board(board: str, score)
+            end_game()
+            endgame_calculations(first_score)
+            is_winner()
+            play_turn()
+            print_initial_info()
+            save_scoreboard()
+            start_game()
+          }
+          class HumanAgent {
+            agent_type
+            get_player_move()
+          }
+          class RandomAgent {
+            agent_type
+            get_player_move()
+          }
+          class SmartAgent {
+            agent_type
+            scoreboards
+            get_player_move()
+            possible_moves()
+            score_move(move)
+            smart_decision()
+          }
+          class Tournament {
+            amount_of_games : int
+            player1_type
+            player2_type
+            points_player1 : int
+            points_player2 : int
+            win : str
+            collect_data(amount_of_games)
+            start_a_tournament()
+          }
+          HumanAgent --|> Agent
+          RandomAgent --|> Agent
+          SmartAgent --|> Agent
+          AgentType --o HumanAgent : agent_type
+          AgentType --o RandomAgent : agent_type
+          AgentType --o SmartAgent : agent_type
+  
+       </div>
+  </body>
+</html>
